@@ -14,45 +14,47 @@ node* creat()
 	node* head, *p, *q;
 
 	head = new node;
+	head->next = nullptr;
 
 	while(cin >> tempData) //Ctrl+Z end intput
 	{
-
 		i++;
 		p = new node;
+		p->data = tempData;
 		if(i == 1)
 		{
-			p->data = tempData;
-			p->next = nullptr;
-			q = p;
+
 			head->next = p;
 		}
 		else
 		{
-			p->data = tempData;
-			p->next = nullptr;
 			q->next = p;
-			q = p;
 		}
+		q = p;
 	}
+
+	if(head->next != nullptr)
+		q->next = nullptr;
 
 	return head;
 };
 
-void printList(node* nodee)
+void printList(node* head)
 {
-	if(nodee ->next == nullptr)
-		{
-			cout << "null";
-			return;
-		} 
+	if(head->next == nullptr)
+	{
+		cout << "null node" <<endl;
+		return ;
+	}
 
-	nodee = nodee->next;	
+	node* nodee = head->next;
+
 	while(nodee != nullptr)
 	{
 		cout << nodee->data << endl;
 		nodee = nodee->next;
 	}
+
 };
 
 int main()
