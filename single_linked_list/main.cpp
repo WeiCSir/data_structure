@@ -57,9 +57,38 @@ void printList(node* head)
 
 };
 
+void insertNode(node* head, int pos, int data)
+{
+	node* p = head;
+	while(pos--)
+	{
+		if(p->next == nullptr)
+		{
+			cout << "wrong position" <<endl;
+			return;
+		}
+
+		p = p->next;
+	}
+
+		auto * ptr = p->next;
+		p->next = new node;
+		p->next->data = data;
+		p->next->next = ptr;
+		return ;
+
+};
+
+
+
 int main()
 {
-	printList(creat());
+
+	node* head = creat();
+	printList(head);
+
+	insertNode(head, 5, 3);
+	printList(head);
 
 	return 0;
 }
