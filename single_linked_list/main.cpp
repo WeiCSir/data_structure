@@ -79,6 +79,35 @@ void insertNode(node* head, int pos, int data)
 
 };
 
+void deleteNode(node* head, int pos)
+{
+	if(pos == 0)
+	{
+		cout << "can not delete head" <<endl;
+		return;
+	}
+
+	node* p = head;
+	node* q;
+	while(pos--)
+	{
+		if(p->next == nullptr)
+		{
+			cout << "wrong position" <<endl;
+			return;
+		}
+
+		q = p;
+		p = p->next;
+	}
+
+	auto * ptr = p ->next ;
+	q->next = ptr;
+	delete p;
+	return ;
+
+}
+
 
 
 int main()
@@ -87,7 +116,9 @@ int main()
 	node* head = creat();
 	printList(head);
 
-	insertNode(head, 5, 3);
+	insertNode(head, 1, 3);
+	printList(head);
+	deleteNode(head, 3);
 	printList(head);
 
 	return 0;
