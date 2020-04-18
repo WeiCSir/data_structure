@@ -122,7 +122,6 @@ node* reverse(node * head)
 	p->next = nullptr;
 	while(r!=nullptr)
 	{
-		cout << "data "<< p->data <<endl;
 		q->next = p;//reverse
 		p = q;
 		q = r;
@@ -132,6 +131,24 @@ node* reverse(node * head)
 	q->next = p;//reverse
 	head->next = q;
 	return head;
+};
+
+node* searchMiddleNode(node* head)
+{
+	node* p = head->next;
+	node* q = p;
+	int i = 0;
+	while(p->next !=nullptr)
+	{
+		p = p->next;
+		i++;
+		if(i%2 == 0)
+		{
+			q=q->next;
+		}
+	}
+
+	return q;
 };
 
 
@@ -146,7 +163,8 @@ int main()
 	// printList(head);
 	// deleteNode(head, 3);
 	// printList(head);
-	printList(reverse(head));
+	// printList(reverse(head));
+	cout << searchMiddleNode(head)->data << endl;
 
 	return 0;
 }
