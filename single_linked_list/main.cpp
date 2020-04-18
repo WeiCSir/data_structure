@@ -105,8 +105,34 @@ void deleteNode(node* head, int pos)
 	q->next = ptr;
 	delete p;
 	return ;
+};
 
-}
+node* reverse(node * head)
+{
+	cout << "reverse"<<endl;
+	if(head->next == nullptr || head->next->next == nullptr)
+	{
+		cout << "can not reverse" << endl;
+		return nullptr;
+	}
+
+	node *p = head->next;
+	node* q = p->next;
+	node* r = q->next;
+	p->next = nullptr;
+	while(r!=nullptr)
+	{
+		cout << "data "<< p->data <<endl;
+		q->next = p;//reverse
+		p = q;
+		q = r;
+		r = r->next;
+	}
+
+	q->next = p;//reverse
+	head->next = q;
+	return head;
+};
 
 
 
@@ -116,10 +142,11 @@ int main()
 	node* head = creat();
 	printList(head);
 
-	insertNode(head, 1, 3);
-	printList(head);
-	deleteNode(head, 3);
-	printList(head);
+	// insertNode(head, 1, 3);
+	// printList(head);
+	// deleteNode(head, 3);
+	// printList(head);
+	printList(reverse(head));
 
 	return 0;
 }
